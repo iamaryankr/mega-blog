@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-background text-text;
+  font-family: 'Inter', sans-serif;
+}
+
+img {
+  transition: transform 0.3s ease;
+}
+img:hover {
+  transform: scale(1.02);
+}
+@layer components {
+  .btn {
+    @apply inline-block px-4 py-2 font-semibold rounded-md shadow-lg transition duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-brand-500 text-surface hover:bg-brand-600;
+  }
+
+  .btn-secondary {
+    @apply bg-surface text-brand-500 hover:bg-surface/90;
+  }
+
+  .btn-gradient {
+    @apply bg-gradient-to-r from-brand-400 to-brand-600 text-surface hover:from-brand-500 hover:to-brand-700;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 text-surface hover:bg-red-700;
+  }
+}
