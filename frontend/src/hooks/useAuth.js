@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function useAuth() {
+  // initialize from localStorage
   const [isAuth, setIsAuth] = useState(!!localStorage.getItem('token'));
 
+  // listen for changes (e.g. after login or logout)
   useEffect(() => {
-    const handleStorage = () => {
+    const onStorage = () => {
       setIsAuth(!!localStorage.getItem('token'));
     };
-    window.addEventListener('storage', handleStorage);
-    return () => window.removeEventListener('storage', handleStorage);
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
   }, []);
 
   return isAuth;

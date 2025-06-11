@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 export default function Layout({ children }) {
-  const isAuth = !!localStorage.getItem('token');
+  const isAuth = useAuth();
   const navigate = useNavigate();
 
   const logout = () => {
