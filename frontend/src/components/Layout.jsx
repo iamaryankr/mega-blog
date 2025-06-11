@@ -3,11 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 export default function Layout({ children }) {
-  const isAuth = useAuth();
+  const { isAuth, logout } = useAuth();
   const navigate = useNavigate();
 
-  const logout = () => {
-    localStorage.removeItem('token');
+  const handleLogout = () => {
+    logout();
     navigate('/login');
   };
 
@@ -24,7 +24,7 @@ export default function Layout({ children }) {
                 <Link to="/create" className="btn btn-primary">
                   New Post
                 </Link>
-                <button onClick={logout} className="btn btn-secondary">
+                <button onClick={handleLogout} className="btn btn-secondary">
                   Logout
                 </button>
               </>
