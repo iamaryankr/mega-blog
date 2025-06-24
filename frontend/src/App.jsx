@@ -11,36 +11,25 @@ import useAuth from './hooks/useAuth';
 
 
 export default function App() {
-  const isAuth = useAuth();
-
+  const { isAuth } = useAuth();
 
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-
-        <Route
-          path="/login"
-          element={isAuth ? <Navigate to="/" replace /> : <LoginPage />}
+        <Route path = "/" element = {<HomePage />} />
+        <Route path = "/login"
+          element = {isAuth ? <Navigate to = "/" replace /> : <LoginPage />}
         />
-
-        <Route path="/signup" element={<SignupPage />} />
-
-
-        <Route path="/posts/:slug" element={<PostPage />} />
-
-        <Route
-          path="/create"
-          element={isAuth ? <CreatePage /> : <Navigate to="/login" replace />}
+        <Route path = "/signup" element = {<SignupPage />} />
+        <Route path = "/posts/:slug" element = {<PostPage />} />
+        <Route path = "/create"
+          element = {isAuth ? <CreatePage /> : <Navigate to="/login" replace />}
         />
-
-        <Route
-          path="/edit/:slug"
-          element={isAuth ? <EditPage /> : <Navigate to="/login" replace />}
+        <Route path="/edit/:slug"
+          element = {isAuth ? <EditPage /> : <Navigate to = "/login" replace />}
         />
-
         {/* Fallback for any unknown route */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path = "*" element = {<Navigate to = "/" replace />} />
       </Routes>
     </Layout>
   );

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { signup } from '../services/auth';
 import { useNavigate } from 'react-router-dom';
 
 export default function SignupPage() {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [error, setError] = useState('');
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
   const handleChange = e =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -15,8 +15,9 @@ export default function SignupPage() {
     try {
       await signup(form);
       alert('Signup successful! Now login.');
-      nav('/login');
-    } catch (err) {
+      navigate('/login');
+    }
+    catch (err) {
       setError(err.response?.data?.error || 'Signup failed');
     }
   };

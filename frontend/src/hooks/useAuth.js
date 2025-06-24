@@ -1,9 +1,8 @@
-// web/src/hooks/useAuth.js
 import { useState, useEffect, useCallback } from 'react';
 
 export default function useAuth() {
   const [isAuth, setIsAuth] = useState(!!localStorage.getItem('token'));
-
+  
   // update state when localStorage changes elsewhere
   useEffect(() => {
     const onStorage = () => setIsAuth(!!localStorage.getItem('token'));
@@ -17,4 +16,4 @@ export default function useAuth() {
   }, []);
 
   return { isAuth, logout };
-}
+};
